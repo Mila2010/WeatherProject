@@ -11,5 +11,4 @@ public interface WeatherView {
 
     void showWeather(ArrayMap<String, String> weatherDetails);
 
-    Context getContext();
 }

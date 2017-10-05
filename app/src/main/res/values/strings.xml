@@ -3,4 +3,8 @@
     <string name="enter_city">Please enter your city: </string>
     <string name="submit_city">SUBMIT</string>
     <string name="image_view_text">Image of current weather</string>
+    <string name="wind">Wind: %1$s</string>
+    <string name="temperature">Current Temperature: %1s</string>
+    <string name="city_name">City: %1s</string>
+    <string name="weather">Weather: %1s</string>
 </resources>
