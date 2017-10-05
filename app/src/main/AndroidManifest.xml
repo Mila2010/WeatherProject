@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:configChanges="screenSize|orientation"
     android:theme="@style/AppTheme">
-        <activity android:name=".MainWeatherActivity">
+        <activity android:name=".WeatherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".SearchWeatherFragment"></activity>-->
+        <!--<activity android:name=".SearchWeatherPresenter"></activity>-->
     </application>
 
 </manifest>
