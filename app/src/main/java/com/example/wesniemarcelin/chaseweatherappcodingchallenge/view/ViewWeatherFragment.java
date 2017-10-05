@@ -1,4 +1,4 @@
-package com.example.wesniemarcelin.chaseweatherappcodingchallenge.fragments;
+package com.example.wesniemarcelin.chaseweatherappcodingchallenge.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +23,7 @@ public class ViewWeatherFragment extends Fragment {
     TextView windSpeed;
     TextView weatherDescription;
     TextView currentTemp;
+    TextView cityName;
 
     @Nullable
     @Override
@@ -33,15 +34,16 @@ public class ViewWeatherFragment extends Fragment {
         weatherDescription = (TextView) mWeatherViewroot.findViewById(R.id.weather_description);
         windSpeed = (TextView) mWeatherViewroot.findViewById(R.id.weather_wind);
         currentTemp = (TextView) mWeatherViewroot.findViewById(R.id.weather_temp);
+        cityName = (TextView) mWeatherViewroot.findViewById(R.id.city_name);
         Bundle bundle = this.getArguments();
         String myIconUrl = bundle.getString("icon");
         String weatherDescriptionText = bundle.getString("description");
-        Float weatherWindSpeed = bundle.getFloat("windSpeed");
-        String windSpeedString = weatherWindSpeed.toString();
-        Float currentTemperature = bundle.getFloat("currentTemp");
+        String weatherWindSpeed = bundle.getString("windSpeed");
+        String currentTemperature = bundle.getString("currentTemp");
         weatherDescription.setText(weatherDescriptionText);
-        windSpeed.setText("Wind: " + windSpeedString);
-        currentTemp.setText("Current Temperature: " + String.format(currentTemperature.toString()));
+        windSpeed.setText("Wind: " + weatherWindSpeed);
+        currentTemp.setText("Current Temperature: " + currentTemperature);
+        cityName.setText("City: " + bundle.getString("cityName"));
         Log.d("URLL TO BE DISPLAYED", "this " + myIconUrl);
         Picasso.with(getContext())
                 .load(myIconUrl)

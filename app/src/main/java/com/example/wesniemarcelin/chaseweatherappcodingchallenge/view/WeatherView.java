@@ -1,4 +1,4 @@
-package com.example.wesniemarcelin.chaseweatherappcodingchallenge;
+package com.example.wesniemarcelin.chaseweatherappcodingchallenge.view;
 
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
@@ -9,6 +9,7 @@ import android.support.v4.util.ArrayMap;
 
 public interface WeatherView {
 
-    void showWeather(ArrayMap<String,String> weatherDetails);
+    void showWeather(ArrayMap<String, String> weatherDetails);
+
     Context getContext();
 }

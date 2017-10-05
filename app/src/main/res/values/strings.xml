@@ -2,7 +2,5 @@
     <string name="app_name">ChaseWeatherAppCodingChallenge</string>
     <string name="enter_city">Please enter your city: </string>
     <string name="submit_city">SUBMIT</string>
-    <string name="city_text">Enter city here...</string>
     <string name="image_view_text">Image of current weather</string>
-    <string name="current_weather_text">Current Weather</string>
 </resources>
