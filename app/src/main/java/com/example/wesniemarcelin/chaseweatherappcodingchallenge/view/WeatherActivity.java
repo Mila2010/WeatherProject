@@ -3,7 +3,6 @@ package com.example.wesniemarcelin.chaseweatherappcodingchallenge.view;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.ArrayMap;
@@ -12,18 +11,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.wesniemarcelin.chaseweatherappcodingchallenge.R;
 import com.example.wesniemarcelin.chaseweatherappcodingchallenge.presenter.SearchWeatherPresenter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class WeatherActivity extends AppCompatActivity implements View.OnClickListener, WeatherView {
 
-    Button submitCityBtn;
-    EditText cityEditText;
-    ImageView viewIcon;
-    private static String TAG = "YOOOO";
+    @BindView(R.id.submit_city) Button mSubmitCityBtn;
+    @BindView(R.id.city_editText) EditText mCityEditText;
+
+    private String TAG = "YOOOO";
     SearchWeatherPresenter mSearchWeatherPresenter;
     String mCityName = "";
 
@@ -39,12 +40,9 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_weather);
         mSaveLastCitySearched = getSharedPreferences(WEATHER_ACTIVITY, MODE_PRIVATE);
-        submitCityBtn = (Button) findViewById(R.id.submit_city);
-        cityEditText = (EditText) findViewById(R.id.city_editText);
+        ButterKnife.bind(this);
 
-        viewIcon = (ImageView) findViewById(R.id.view_icon);
-
-        submitCityBtn.setOnClickListener(this);
+        mSubmitCityBtn.setOnClickListener(this);
         mSearchWeatherPresenter = new SearchWeatherPresenter(this);
 
         if (!mSaveLastCitySearched.getString(LAST_CITY_SEARCHED, NO_CITY_SEARCHED).equalsIgnoreCase(NO_CITY_SEARCHED)) {
@@ -58,18 +56,11 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-
-    }
-
-
-    @Override
     public void onClick(View view) {
 
         Toast.makeText(getContext(), "Please enter a valid input", Toast.LENGTH_LONG).show();
-        if (!cityEditText.getText().toString().isEmpty()) {
-            mCityName = cityEditText.getText().toString();
+        if (!mCityEditText.getText().toString().isEmpty()) {
+            mCityName = mCityEditText.getText().toString();
             mSaveLastCitySearched.edit().putString(LAST_CITY_SEARCHED, mCityName).apply();
 
         } else {
@@ -86,7 +77,6 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         Bundle bundle = new Bundle();
 
         // Create new fragment and transaction to allow user to view the weather for the location provided
-        Log.e(TAG, "Viewing Weather: ");
         Fragment newFragment = new ViewWeatherFragment();
         bundle.putString("icon", weatherDetails.get("url"));
         bundle.putString("description", weatherDetails.get("weatherDescription"));
@@ -112,10 +102,4 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-
-    }
 }
