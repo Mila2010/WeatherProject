@@ -15,4 +15,6 @@ public class Constants {
     public final static String WIND_SPEED = "windSpeed";
     public final static String CURRENT_TEMP= "currentTemperature";
     public final static String CITY_NAME = "cityName";
+    public final static String BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    public final static String API_KEY = "1eb0319a72231ce4d37d1da905ccbec2";
 }
